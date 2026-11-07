@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import "./index.css";
+import "./ui-refresh.css";
 import Landing from "./components/Landing";
 import Editor from "./components/Editor";
 import { CustomizeSealModal, UploadSealModal } from "./components/SealModals";

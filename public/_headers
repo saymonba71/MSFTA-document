@@ -1,0 +1,20 @@
+# Static-host headers (Netlify/Cloudflare Pages). NOTE: no Content-Security-Policy
+# here — a header CSP would intersect the runtime <meta> CSP (public/csp.js) and
+# block the user-allowed cloud-AI origin. CSP is delivered at runtime instead.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+
+/sw.js
+  Cache-Control: no-cache
+  Service-Worker-Allowed: /
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: no-cache
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

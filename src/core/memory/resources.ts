@@ -1,0 +1,7 @@
+export function releaseCanvas(c: HTMLCanvasElement | OffscreenCanvas) { c.width = 0; c.height = 0; }
+export function releaseBitmap(b?: ImageBitmap | null) { b?.close(); }
+export function trackUrl(url: string, set: Set<string>) { set.add(url); return url; }
+export function revokeAll(set: Set<string>) { set.forEach((u) => URL.revokeObjectURL(u)); set.clear(); }
+export function maxCanvasPixels(): number { const mem = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4; const mobile = /Android|iPhone|iPad/i.test(navigator.userAgent); return mobile || mem <= 2 ? 16_000_000 : 64_000_000; }
+export function batchConcurrency(): number { const nav = navigator as Navigator & { deviceMemory?: number }; const mobile = /Android|iPhone|iPad/i.test(navigator.userAgent); const hc = navigator.hardwareConcurrency || 4; const mem = nav.deviceMemory ?? 4; const perfMem = (performance as Performance & { memory?: { usedJSHeapSize: number; jsHeapSizeLimit: number } }).memory; const pressure = perfMem ? perfMem.usedJSHeapSize / perfMem.jsHeapSizeLimit > 0.7 : false; return Math.max(1, Math.min(mobile || mem <= 2 ? 2 : 4, hc - 1, pressure ? 1 : 4)); }
+export async function withBitmap<T>(blob: Blob, fn: (b: ImageBitmap) => Promise<T> | T, previewWidth?: number): Promise<T> { const b = await createImageBitmap(blob, previewWidth ? { resizeWidth: previewWidth, resizeQuality: "high" } : undefined); try { return await fn(b); } finally { b.close(); } }
