@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "সিল বসান - ডকুমেন্ট স্টুডিও",
+  "short_name": "সিল বসান",
+  "lang": "bn",
+  "description": "ছবি ও PDF-এ সিল, লেখা ও স্বাক্ষর বসানোর ব্যক্তিগত কর্মক্ষেত্র।",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f9",
+  "theme_color": "#14243b",
+  "icons": [
+    { "src": "/icons/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
