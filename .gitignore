@@ -3,3 +3,5 @@ dist/
 artifacts/
 test-results/
 playwright-report/
+public/ocr/
+public/bg-assets/
